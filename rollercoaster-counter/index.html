@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Life Is A RollerCoaster</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="background"></div>
+            <div class="body">
+                <h1>Coaster Riders:</h1>
+                <h2 id="count-el">0</h2>
+                <button type="button" id="increment-btn" onclick="increment()">INCREMENT</button>
+                <button id="save-btn" onclick="save()">SAVE</button>
+                <!-- Using the <span> has given an area I can increment separate from the rst of the line -->
+                <p id="running-total"> Total for Day: <span id="passengers"></span></p>
+                <br>
+                <br>
+                <p id="save-el"> Previous entries: </p>
+
+            </div>
+        <script src="index.js"></script>
+    </body>
+</html>
