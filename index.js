@@ -1,47 +1,30 @@
-// Initially this code was inbetween the <script> tags in the html file, but much better to separate into another and use this file as src.
-// document.getElementById("count-el").innerText = 7
+// let homeScoreEl = document.getElementById("home-score");
+// let guestScoreEl = document.getElementById("guest-score");
 
-let count = 0
+homeScore = 0
+guestScore = 0
 
-// Initialise html element
-let countEl = document.getElementById("count-el")
-
-// // how to display something in the terminal
-// console.log(count)
-
-
-// initialise count as 0
-//listen for clicks on increment button and add to count variable
-//change count-el in html to reflect count value
-
-function increment() {
-    count += 1
-    countEl.innerText = count    //.innerText will affect the text between html elements <h2> < p> etc
-    console.log(count)
+function addPoints(team, num) {
+    if(team == 'home') {
+        homeScore += num
+        updateScore('home-score', homeScore)
+        // homeScoreEl.innerText = homeScore
+    }
+   else {
+        guestScore += num
+        updateScore('guest-score', guestScore)
+        // guestScoreEl.innerText = guestScore
+   }
 }
 
-let saveEl = document.getElementById("save-el")
-let saveClick = false
-let runningTotal = 0
+// Added a function to bounce out the score when a point is achieved
+function updateScore(element, score) {
+    const scoreEl = document.getElementById(element)
+    scoreEl.textContent = score
 
-let dailyTotal = document.getElementById("passengers")
+    scoreEl.classList.add('pop') // Pop is created in the CSS
 
-function save() {
-    if (!saveClick) {
-        saveEl.innerText += ` ${count}`
-        saveClick = true
-    }
-    else {
-        saveEl.innerText += ` - ${count}`
-    }
-    console.log(count)
-    runningTotal += count
-    // To amend just PART of a line we can use the <span> in the HTML and innerHTML in the js
-    dailyTotal.innerHTML = runningTotal
-    count = 0
-    countEl.innerText = count
+    setTimeout(() => {
+        scoreEl.classList.remove('pop')
+    }, 300); // Lasts .3 seconds
 }
-
-
-// could also use mozilla dev network saveEl.textContent to show hiden elements like spaces (innerText will trim these!)
-
